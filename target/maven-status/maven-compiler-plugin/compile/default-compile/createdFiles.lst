@@ -3,10 +3,10 @@ com\sosha\ui\MainController.class
 com\sosha\core\domain\Role.class
 com\sosha\core\domain\SyncOutbox.class
 com\sosha\core\repository\ProductRepository.class
-com\sosha\config\SQLiteDialect.class
 com\sosha\core\domain\StockLevel.class
 com\sosha\core\service\FinanceService.class
 com\sosha\core\sync\StoreApi.class
+com\sosha\util\HashGen2.class
 com\sosha\core\repository\UserRepository.class
 com\sosha\core\domain\Product.class
 com\sosha\core\domain\SaleItem.class
@@ -26,6 +26,7 @@ com\sosha\python\PythonClient.class
 com\sosha\core\security\AuthService.class
 com\sosha\core\domain\FinanceLedger.class
 com\sosha\core\domain\Payment.class
+com\sosha\util\HashGen.class
 com\sosha\hardware\PrinterService.class
 com\sosha\core\sync\OutboxEnqueuer.class
 com\sosha\core\domain\Category.class

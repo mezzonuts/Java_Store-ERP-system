@@ -7,6 +7,8 @@ spring:
       connection-test-query: SELECT 1
   jpa:
     properties:
-      hibernate.dialect: com.sosha.config.SQLiteDialect
+      hibernate.dialect: org.hibernate.community.dialect.SQLiteDialect
+    hibernate.ddl-auto: update
   flyway:
-    locations: classpath:db/migration/common,classpath:db/migration/sqlite
+    enabled: false
+    validate-on-migrate: false

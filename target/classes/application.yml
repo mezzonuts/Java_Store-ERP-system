@@ -2,11 +2,10 @@ spring:
   profiles:
     active: sqlite
   jpa:
-    hibernate.ddl-auto: validate
-    open-in-view: false
-  flyway:
-    enabled: true
-    locations: classpath:db/migration/common
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.community.dialect.SQLiteDialect
 server.port: 8080
 sosha:
   jwt-expiry-hours: 8

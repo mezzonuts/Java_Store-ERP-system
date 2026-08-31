@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.sosha.ui.MainController" prefWidth="1200" prefHeight="700">
   <top>
     <HBox spacing="12" style="-fx-padding:8; -fx-background-color:#1e293b;">

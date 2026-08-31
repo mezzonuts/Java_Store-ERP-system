@@ -170,6 +170,14 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/mezzonuts/Java_Store-ERP-system</url>
+        </repository>
+    </distributionManagement>
+
     <profiles>
         <profile>
             <id>sqlite</id>

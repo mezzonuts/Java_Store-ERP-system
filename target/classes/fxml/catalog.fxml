@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.sosha.ui.CatalogController" spacing="8" alignment="TOP_CENTER" style="-fx-padding:20;">
+    <Label text="Product Catalog" style="-fx-font-size:18;"/>
+    <TextField fx:id="searchField" promptText="Search SKU, name, barcode..."/>
+    <TableView fx:id="table" prefHeight="400" prefWidth="800">
+        <columns>
+            <TableColumn text="SKU" prefWidth="150"/>
+            <TableColumn text="Name" prefWidth="300"/>
+            <TableColumn text="Price" prefWidth="120"/>
+        </columns>
+    </TableView>
+</VBox>

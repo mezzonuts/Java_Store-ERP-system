@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.sosha.ui.InventoryController" spacing="8" padding="20">
+    <Label text="Inventory Adjustment" style="-fx-font-size:16;"/>
+    <HBox spacing="8">
+        <Label text="Product ID"/>
+        <TextField fx:id="productIdField" promptText="Product UUID"/>
+    </HBox>
+    <HBox spacing="8">
+        <Label text="Warehouse ID"/>
+        <TextField fx:id="warehouseIdField" promptText="Warehouse UUID"/>
+    </HBox>
+    <HBox spacing="8">
+        <Label text="Qty (positive=in, negative=out)"/>
+        <TextField fx:id="qtyField" promptText="e.g. -5"/>
+    </HBox>
+    <HBox spacing="8">
+        <Label text="Reason"/>
+        <TextField fx:id="reasonField" promptText="Damage/Theft/Correction"/>
+    </HBox>
+    <Button text="Adjust Stock" onAction="#onAdjust" defaultButton="true"/>
+    <Label fx:id="statusLabel"/>
+</VBox>

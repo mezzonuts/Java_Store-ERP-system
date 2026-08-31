@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="loginController" class="com.sosha.ui.LoginController" scope="prototype"/>
+    <bean id="userService" class="com.sosha.core.repository.UserRepository"/>
+    <bean id="authService" class="com.sosha.core.security.AuthService"/>
+    <bean id="jwtService" class="com.sosha.security.JwtService"/>
+    <bean id="tenantContext" class="com.sosha.core.security.TenantContext"/>
+
+</beans>

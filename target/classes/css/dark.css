@@ -1,0 +1,9 @@
+/* dark.css */
+.root {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f1f5f9;
+}
+.button {
+    -fx-background-color: #4b5563;
+    -fx-text-fill: #f9fafb;
+}

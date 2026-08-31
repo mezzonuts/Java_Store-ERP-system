@@ -1,0 +1,89 @@
+name: Build & Test Matrix
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test-matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        db-profile: [sqlite, postgres]
+        exclude:
+          - os: macos-latest
+            db-profile: postgres
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: sosha
+          POSTGRES_PASSWORD: sosha
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+        if: matrix.db-profile == 'postgres'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Build & Test (${{ matrix.db-profile }})
+        run: mvn clean verify -P${{ matrix.db-profile }} -q
+
+      - name: Run Python tests
+        run: |
+          pip install fastapi uvicorn pytest
+          pytest python-sidecar/test_api.py -v
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        if: matrix.db-profile == 'sqlite'
+
+  privacy-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Privacy Audit Test
+        run: mvn test -Dtest=PrivacyAuditTest -q
+
+  package:
+    runs-on: ${{ matrix.os }}
+    needs: test-matrix
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Build jpackage
+        run: mvn package -DskipTests -q
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: sosha-${{ matrix.os }}-2.0.0
+          path: target/jpackage/*

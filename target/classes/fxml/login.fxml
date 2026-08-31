@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="12" alignment="CENTER" style="-fx-padding: 40;">
+  <Label text="Sosha POS v2.0 - Login Offline" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+  <TextField fx:id="usernameField" promptText="Username"/>
+  <PasswordField fx:id="passwordField" promptText="Password"/>
+  <Button text="Login" onAction="#onLogin" defaultButton="true"/>
+  <Label fx:id="statusLabel"/>
+</VBox>

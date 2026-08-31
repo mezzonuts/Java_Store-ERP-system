@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:${user.home}/.sosha/sosha.db
+    driver-class-name: org.sqlite.JDBC
+    hikari:
+      maximum-pool-size: 1
+      connection-test-query: SELECT 1
+  jpa:
+    properties:
+      hibernate.dialect: com.sosha.config.SQLiteDialect
+  flyway:
+    locations: classpath:db/migration/common,classpath:db/migration/sqlite

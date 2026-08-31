@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: sqlite
+  jpa:
+    hibernate.ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/common
+server.port: 8080
+sosha:
+  jwt-expiry-hours: 8
+  secret-file: ${user.home}/.sosha/secret.key
+encryption:
+  sqlite-cipher-key: ${SOSHA_CIPHER_KEY:sosha-demo-key-256bit}
+  pg-crypto-password: ${SOSHA_PG_PASS:sosha-demo-pass}
+  encryption-algorithm: AES-256-GCM

@@ -1,0 +1,9 @@
+/* light.css */
+.root {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+.button {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111827;
+}

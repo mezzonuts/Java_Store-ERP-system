@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.sosha.ui.MainController" prefWidth="1200" prefHeight="700">
+  <top>
+    <HBox spacing="12" style="-fx-padding:8; -fx-background-color:#1e293b;">
+      <Label fx:id="branchLabel" text="Branch" style="-fx-text-fill:white;"/>
+      <Label fx:id="syncDot" text="●" style="-fx-text-fill:green;"/>
+      <Region HBox.hgrow="ALWAYS"/>
+      <CheckBox fx:id="darkModeCheck" text="Dark" style="-fx-text-fill:white;"/>
+      <Label fx:id="userLabel" text="User" style="-fx-text-fill:white;"/>
+    </HBox>
+  </top>
+  <left>
+    <VBox spacing="4" style="-fx-padding:8; -fx-background-color:#f1f5f9;" prefWidth="160">
+      <Button text="POS (F2)" onAction="#navPos" maxWidth="Infinity"/>
+      <Button text="Catalog" onAction="#navCatalog" maxWidth="Infinity"/>
+      <Button text="Inventory" onAction="#navInventory" maxWidth="Infinity"/>
+      <Button text="Finance" onAction="#navFinance" maxWidth="Infinity"/>
+    </VBox>
+  </left>
+  <center>
+    <StackPane fx:id="contentPane" style="-fx-padding:12;"/>
+  </center>
+</BorderPane>

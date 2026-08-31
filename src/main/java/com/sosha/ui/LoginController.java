@@ -28,13 +28,17 @@ public class LoginController {
             statusLabel.setStyle("-fx-text-fill: green;");
             javafx.application.Platform.runLater(() -> {
                 try {
+                    Thread.sleep(500);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
                     loader.setControllerFactory(ctx::getBean);
-                    Scene scene = new Scene(loader.load(), 1280, 720);
+                    javafx.scene.Parent mainRoot = loader.load();
+                    Scene scene = new Scene(mainRoot, 1280, 720);
                     Stage stage = (Stage) usernameField.getScene().getWindow();
                     stage.setScene(scene);
                     stage.setTitle("Sosha POS v2.0 - Main");
+                    stage.show();
                 } catch (Exception e) {
+                    statusLabel.setText("Error: " + e.getMessage());
                     e.printStackTrace();
                 }
             });

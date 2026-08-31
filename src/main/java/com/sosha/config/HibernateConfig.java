@@ -15,13 +15,15 @@ public class HibernateConfig {
         return a;
     }
     @Bean
-    public org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean entityManagerFactory(javax.sql.DataSource ds){
+    public org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean entityManagerFactory(javax.sql.DataSource ds, org.springframework.core.env.Environment env){
         org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean emf = new org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(ds);
         emf.setPackagesToScan("com.sosha.core.domain");
         emf.setJpaVendorAdapter(vendorAdapter());
         emf.getJpaPropertyMap().put("hibernate.ejb.interceptor", tenantInterceptor);
         emf.getJpaPropertyMap().put("hibernate.physical_naming_strategy", new CamelCaseToUnderscoresNamingStrategy());
+        String ddlauto = env.getProperty("spring.jpa.hibernate.ddl-auto","validate");
+        emf.getJpaPropertyMap().put("hibernate.hbm2ddl.auto", ddlauto);
         return emf;
     }
 }
